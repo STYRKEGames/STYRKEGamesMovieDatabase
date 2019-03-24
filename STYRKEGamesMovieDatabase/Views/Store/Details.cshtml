@@ -1,0 +1,38 @@
+﻿@model STYRKEGamesMovieDatabase.Models.Movie
+
+@{
+    ViewBag.Title = "Movie - " + Model.Title;
+}
+
+<h2>@Model.Title</h2>
+
+<p>
+    <img alt="@Model.Title" src="@Url.Content(@Model.MovieArtUrl)" />
+</p>
+
+<div id="album-details">
+    <p>
+        <em>Genre:</em>
+        @Model.Genre.Name
+    </p>
+    <p>
+        <em>Director:</em>
+        @Model.Director.Name
+    </p>
+    <p>
+        <em>Cast:</em>
+        @Model.Cast.Name
+    </p>
+    <p>
+        <em>Writer:</em>
+        @Model.Writer.Name
+    </p>
+    <p>
+        <em>Price:</em>
+        @Html.DisplayFor(model => model.Price)
+    </p>
+    <p class="button">
+        @Html.ActionLink("Add to cart", "AddToCart",
+            "ShoppingCart", new { id = Model.MovieId }, "")
+    </p>
+</div>
